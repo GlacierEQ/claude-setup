@@ -84,16 +84,6 @@
                     }
                 ]
             }
-        ],
-        "UserPromptSubmit": [
-            {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "uv run .claude/hooks/task_hard_prep_hook.py"
-                    }
-                ]
-            }
         ]
     },
     "statusLine": {

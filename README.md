@@ -1,6 +1,6 @@
 # Claude Code Setup
 
-> A comprehensive configuration setup for Claude Code with Model Context Protocol (MCP) servers, custom commands, and automated workflows.
+> A comprehensive configuration setup for Claude Code with Model Context Protocol (MCP) servers, custom commands, and quality-focused workflows.
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-blue.svg)](https://claude.ai/code) [![MCP](https://img.shields.io/badge/MCP-Enabled-green.svg)](https://modelcontextprotocol.io/) [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 
@@ -21,10 +21,10 @@
 
 This project provides a pre-configured environment for Claude Code with enhanced capabilities through:
 
-- **MCP Servers**: Context7, Sequential Thinking
-- **Custom Commands**: Intelligent workflows for commits, tasks, and problem-solving
-- **Hook System**: Automated directory management and workflow triggers
-- **Structured Workflows**: Organized task management with reporting and planning
+- **MCP Servers**: Context7 for library documentation and code context
+- **Custom Commands**: Intelligent workflows for commits, tasks, code review, and prompt optimization
+- **Code Quality Tools**: Modern CLI tool enforcement and validation hooks
+- **Structured Workflows**: Organized task management with best practices
 
 ## Quick Start
 
@@ -37,7 +37,7 @@ git clone <your-repo> claude-setup
 cd claude-setup
 
 # 3. Start using commands
-/task_hard implement user authentication
+/task_easy implement user authentication
 ```
 
 ## Prerequisites
@@ -70,9 +70,6 @@ uv --version
 # Copy configuration files to your project
 cp -r .claude/ /your/project/
 cp .mcp.json /your/project/
-
-# Ensure hook permissions
-chmod +x .claude/hooks/task_hard_prep_hook.py
 ```
 
 ## Modern CLI Tools Installation Guide
@@ -245,22 +242,11 @@ yq --version
 
 - **`/commit`**: Intelligent commit workflow with conventional standards
 - **`/code-review`**: Reviews uncommitted changes before committing
-- **`/task_hard`**: Advanced problem-solving with automated directory management
-- **`/task_easy`**: Simplified task workflow for lighter needs
+- **`/task_easy`**: Structured problem-solving with best practices and code quality guidelines
+- **`/optimize-prompt`**: Analyzes and optimizes prompts using the 10 golden rules for AI interaction
 
 ### 🤖 Custom Agents
 
-- **`investigator`**: Expert code investigator that tracks down related code to problems
-  - Uses sequential thinking and advanced search tools
-  - Prioritizes files containing specified keywords during investigation
-  - Generates comprehensive INVESTIGATION_REPORT.md files with keyword match analysis
-  - Integrated with task_hard workflow
-- **`code-flow-mapper`**: Expert code flow mapper that traces execution paths and file interconnections
-  - Maps code flow and analyzes file relationships
-  - Generates FLOW_REPORT.md files
-- **`planner`**: Expert planner that takes into account investigation and flow analysis reports
-  - Creates detailed plans that solve all problems
-  - Generates comprehensive PLAN.md files
 - **`code-reviewer`**: Senior code review specialist for quality assurance
   - Reviews changes for quality, security, and maintainability
   - Provides prioritized feedback (critical, warnings, suggestions)
@@ -269,72 +255,77 @@ yq --version
 ### 🔌 MCP Servers
 
 - **Context7**: Library documentation and code context
-- **Sequential Thinking**: Advanced reasoning and problem-solving
 
 ### ⚡ Hook System
 
-- **UserPromptSubmit**: Automatic directory creation for task workflows
+- **PreToolUse**: Tool validation for modern CLI tool enforcement
 - **Extensible**: Easy to add custom hooks for workflow automation
 - **Documentation**: [Hooks Reference](https://docs.anthropic.com/en/docs/claude-code/hooks) | [Hooks Guide](https://docs.anthropic.com/en/docs/claude-code/hooks-guide)
 
 ## Commands
 
-### `/task_hard` - Advanced Problem Solving
+### `/task_easy` - Structured Problem Solving
 
-Automated workflow for complex problem-solving with structured investigation and planning.
+Structured workflow for problem-solving with built-in code quality guidelines.
 
 **Usage:**
 
 ```bash
-/task_hard [problem description]
+/task_easy [problem description]
 ```
 
 **Features:**
 
-- ✅ Automatic `claude-instance-{id}` directory creation
-- ✅ Sequential thinking for complex reasoning
-- ✅ Multi-agent workflow with specialized subagents
-- ✅ Automatically extracts keywords from problems when not explicitly provided
-- ✅ Prioritizes files containing relevant keywords during codebase analysis
-- ✅ Codebase investigation with INVESTIGATION_REPORT.md generation
-- ✅ Code flow mapping with FLOW_REPORT.md analysis
-- ✅ Structured planning with PLAN.md output
-- ✅ Incremental instance numbering
-- ✅ Edge case handling and best practices focus
+- ✅ Step-by-step analysis before implementation
+- ✅ Edge case identification and handling
+- ✅ Self-documenting code with clear naming conventions
+- ✅ XML documentation for public APIs
+- ✅ Root cause focus (no bandaid fixes)
+- ✅ No unnecessary fallbacks or backwards compatibility
+
+**Output Format:**
+
+1. **Brief Analysis**: Key considerations and edge cases identified
+2. **Solution**: Clean, production-ready code
+3. **Summary**: One-line description of changes made
 
 **Examples:**
 
 ```bash
-# Basic usage - keywords automatically detected
-/task_hard implement user authentication system
-
-# Advanced usage - explicit keywords for better targeting
-/task_hard implement user dashboard
-Keywords: dashboard, user, profile, settings
-
-# Complex problem with specific focus areas
-/task_hard fix payment processing bugs
-Keywords: payment, stripe, transaction, webhook
+/task_easy implement user authentication system
+/task_easy fix the null reference in payment processing
+/task_easy add validation to the user registration form
 ```
 
-**Keyword Usage:**
+### `/optimize-prompt` - Prompt Optimization
 
-- **Automatic Detection**: The system automatically identifies relevant keywords from your problem description
-- **Manual Keywords**: Add Keywords: keyword1, keyword2, keyword3 on a new line after your problem statement for precise file targeting
-- **Priority Investigation**: Files containing these keywords are investigated first and flagged as high-priority in reports
-- **Better Results**: Explicit keywords help focus investigation on the most relevant code areas
+Analyzes and transforms prompts using the 10 golden rules for maximizing AI output quality.
 
-**Workflow:**
+**Usage:**
 
-1. 🔧 Hook detects `/task_hard` prompt
-2. 📁 Creates `claude-code-storage/claude-instance-{id}/` directory
-3. 🏷️ Extracts or detects relevant keywords from problem statement
-4. 🔍 Investigator agent analyzes codebase using sequential thinking with keyword-based file prioritization
-5. 📄 Generates comprehensive INVESTIGATION_REPORT.md with keyword match analysis and related files
-6. 🗺️ Code-flow-mapper agent traces execution paths and file interconnections
-7. 📊 Generates detailed FLOW_REPORT.md with code relationships
-8. 📋 Planner agent reads both reports and creates comprehensive PLAN.md
-9. 👤 User reviews and approves plan
+```bash
+/optimize-prompt [your prompt to analyze]
+```
+
+**Features:**
+
+- ✅ Scorecard evaluation against 10 optimization rules
+- ✅ Detailed improvement recommendations
+- ✅ Fully rewritten optimized prompt
+- ✅ Automatic export to `.claude/optimized-prompts/`
+
+**The 10 Golden Rules:**
+
+1. Tone of Collaboration - Clear, firm, respectful
+2. Principle of Explicitness - Action + Quantity + Topic + Audience
+3. Defining Boundaries - Constraints produce better results
+4. Exploratory Draft - Plan → Refine → Execute
+5. Output Details - Structured formats (tables, JSON, lists)
+6. Explaining the "Why" - Context and intent
+7. Art of Brevity - Specify detail level
+8. Providing a Scaffold - Templates and examples
+9. Power Phrases - "Think step-by-step", "Critique your response"
+10. Divide & Conquer - Break massive tasks into sub-tasks
 
 ### `/code-review` - Automated Code Review
 
@@ -386,40 +377,7 @@ Streamlined commit workflow following conventional commit standards.
 /commit
 ```
 
-### `/task_easy` - Simplified Tasks
-
-Lightweight task workflow for simpler problem-solving needs.
-
 ## Configuration
-
-### Working Directory Considerations
-
-**Important:** When using this configuration in projects with nested directory structures (e.g., monorepos with `backend/`, `frontend/` subdirectories), you may start Claude Code from a subdirectory rather than the project root.
-
-**Impact on hooks:**
-
-- Hooks using relative paths may fail if the working directory is not the project root
-- The `/status` command shows the current working directory
-- Use `$CLAUDE_PROJECT_DIR` environment variable or relative paths to ensure hooks work correctly
-
-**Recommended hook configuration for nested projects:**
-
-```json
-{
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/task_hard_prep_hook.py"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
 
 ### Directory Structure
 
@@ -427,26 +385,24 @@ Lightweight task workflow for simpler problem-solving needs.
 claude-setup/
 ├── .claude/
 │   ├── settings.json          # Permissions and hook configuration
+│   ├── settings.local.json    # Local MCP server settings
 │   ├── agents/
-│   │   ├── investigator.md    # Code investigation agent
-│   │   ├── code-flow-mapper.md # Code flow mapping agent
-│   │   ├── planner.md         # Planning agent
 │   │   └── code-reviewer.md   # Code review specialist
 │   ├── hooks/
-│   │   └── task_hard_prep_hook.py  # Auto directory creation
-│   └── commands/
-│       ├── task_hard.md     # Advanced task workflow
-│       ├── task_easy.md       # Simple task workflow
-│       ├── code-review.md     # Code review workflow
-│       └── commit.md          # Commit workflow
+│   │   └── tool_validation_hook.py  # Modern CLI tool enforcement
+│   ├── commands/
+│   │   ├── task_easy.md       # Structured task workflow
+│   │   ├── optimize-prompt.md # Prompt optimization workflow
+│   │   ├── code-review.md     # Code review workflow
+│   │   └── commit.md          # Commit workflow
+│   └── optimized-prompts/     # Auto-generated optimized prompts
 ├── .mcp.json                  # MCP server configuration
-├── claude-code-storage/       # Auto-generated task directories
 └── README.md
 ```
 
 ### Settings Configuration
 
-The `.claude/settings.json` file contains:
+The `.claude/settings.json` file contains permissions and hook configurations:
 
 ```json
 {
@@ -455,18 +411,27 @@ The `.claude/settings.json` file contains:
     "deny": [...]
   },
   "hooks": {
-    "UserPromptSubmit": [
+    "PreToolUse": [
       {
+        "matcher": "Bash",
         "hooks": [
           {
             "type": "command",
-            "command": "uv run .claude/hooks/task_hard_prep_hook.py"
+            "command": "uv run .claude/hooks/tool_validation_hook.py"
           }
         ]
       }
     ]
-  },
-  "enabledMcpjsonServers": ["context7", "sequential-thinking"]
+  }
+}
+```
+
+The `.claude/settings.local.json` file enables MCP servers:
+
+```json
+{
+  "enabledMcpjsonServers": ["context7"],
+  "enableAllProjectMcpServers": true
 }
 ```
 
@@ -483,10 +448,6 @@ The `.mcp.json` file defines server configurations:
       "env": {
         "DEFAULT_MINIMUM_TOKENS": "6000"
       }
-    },
-    "sequential-thinking": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
     }
   }
 }
@@ -499,45 +460,21 @@ The `.mcp.json` file defines server configurations:
 **Hook not triggering:**
 
 - Ensure `uv` is installed and in PATH
-- Check script permissions: `chmod +x .claude/hooks/task_hard_prep_hook.py`
+- Check script permissions: `chmod +x .claude/hooks/*.py`
 - Verify hook configuration in `.claude/settings.json`
 
-**Hook path issues when working directory is not project root:**
+**Modern CLI tools not found:**
 
-When Claude Code's working directory is a subdirectory (e.g., `backend/` or `frontend/`), hooks may fail to find the correct path. This commonly happens in new projects with nested layouts.
-
-**Solutions:**
-
-1. **Use environment variable (Recommended for cross-platform):**
-
-   ```json
-   "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/task_hard_prep_hook.py"
-   ```
-
-2. **Use relative path from project root:**
-
-   ```json
-   "command": "uv run ../../.claude/hooks/task_hard_prep_hook.py"
-   ```
-
-3. **Use absolute path (if known):**
-   ```json
-   "command": "uv run /full/path/to/project/.claude/hooks/task_hard_prep_hook.py"
-   ```
-
-**Note:** The `$CLAUDE_PROJECT_DIR` environment variable may not work on all systems. If you encounter issues, use the relative path approach or place the `.claude` directory in your working directory.
-
-**Directory creation fails:**
-
-- Check file system permissions
-- Ensure `claude-code-storage/` parent directory exists
-- Review hook script logs for error details
+- Install the required tools using the installation commands in the [Modern CLI Tools Installation Guide](#modern-cli-tools-installation-guide)
+- Verify installation with version commands (e.g., `rg --version`, `bat --version`)
+- Ensure tools are in your PATH
 
 **MCP servers not loading:**
 
 - Verify Node.js and npx are installed
 - Check `.mcp.json` configuration syntax
 - Ensure MCP packages are available via npx
+- Verify `enabledMcpjsonServers` in `.claude/settings.local.json`
 
 ### Debug Mode
 
@@ -553,6 +490,12 @@ claude --debug
 2. Create a feature branch: `git checkout -b feature-name`
 3. Make your changes and test thoroughly
 4. Submit a pull request with detailed description
+
+### Adding Custom Commands
+
+1. Create markdown file in `.claude/commands/`
+2. Use `$ARGUMENTS` placeholder for user input
+3. Define clear instructions and output format
 
 ### Adding Custom Hooks
 
