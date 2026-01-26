@@ -37,7 +37,7 @@ git clone <your-repo> claude-setup
 cd claude-setup
 
 # 3. Start using commands
-/task_easy implement user authentication
+/task implement user authentication
 ```
 
 ## Prerequisites
@@ -242,7 +242,7 @@ yq --version
 
 - **`/commit`**: Intelligent commit workflow with conventional standards
 - **`/code-review`**: Reviews uncommitted changes before committing
-- **`/task_easy`**: Structured problem-solving with best practices and code quality guidelines
+- **`/task`**: Structured problem-solving with best practices and code quality guidelines
 - **`/optimize-prompt`**: Analyzes and optimizes prompts using the 10 golden rules for AI interaction
 
 ### 🤖 Custom Agents
@@ -264,14 +264,14 @@ yq --version
 
 ## Commands
 
-### `/task_easy` - Structured Problem Solving
+### `/task` - Structured Problem Solving
 
 Structured workflow for problem-solving with built-in code quality guidelines.
 
 **Usage:**
 
 ```bash
-/task_easy [problem description]
+/task [problem description]
 ```
 
 **Features:**
@@ -292,9 +292,9 @@ Structured workflow for problem-solving with built-in code quality guidelines.
 **Examples:**
 
 ```bash
-/task_easy implement user authentication system
-/task_easy fix the null reference in payment processing
-/task_easy add validation to the user registration form
+/task implement user authentication system
+/task fix the null reference in payment processing
+/task add validation to the user registration form
 ```
 
 ### `/optimize-prompt` - Prompt Optimization
@@ -391,7 +391,7 @@ claude-setup/
 │   ├── hooks/
 │   │   └── tool_validation_hook.py  # Modern CLI tool enforcement
 │   ├── commands/
-│   │   ├── task_easy.md       # Structured task workflow
+│   │   ├── task.md            # Structured task workflow
 │   │   ├── optimize-prompt.md # Prompt optimization workflow
 │   │   ├── code-review.md     # Code review workflow
 │   │   └── commit.md          # Commit workflow
